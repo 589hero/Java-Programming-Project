@@ -28,8 +28,8 @@ public class GoogleMap extends JFrame{
 	public GoogleMap() {
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		Dimension screenSize = tool.getScreenSize();
-		int width = screenSize.width;  // ¸ğ´ÏÅÍÀÇ °¡·Î±æÀÌ ÀúÀå.
-		int height = screenSize.height; // ¸ğ´ÏÅÍÀÇ ¼¼·Î±æÀÌ ÀúÀå.
+		int width = screenSize.width;  // ëª¨ë‹ˆí„°ì˜ ê°€ë¡œê¸¸ì´ ì €ì¥.
+		int height = screenSize.height; // ëª¨ë‹ˆí„°ì˜ ì„¸ë¡œê¸¸ì´ ì €ì¥.
 		setLocation(width/3, height/4);
 		
 		//setLayout(new BorderLayout());
@@ -42,7 +42,7 @@ public class GoogleMap extends JFrame{
 		//setMap("cgv");
 	}
 	
-	public void setMap(String location) { // frameÀÇ ¾Æ·¡ÂÊ¿¡ Áöµµ¸¦ ³ªÅ¸³»´Â ¸Ş¼Òµå
+	public void setMap(String location) { // frameì˜ ì•„ë˜ìª½ì— ì§€ë„ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë©”ì†Œë“œ
 		googleAPI.downloadMap(location);
 		googleMap.setIcon(googleAPI.getMap(location));
 		googleAPI.fileDelete(location);
@@ -66,35 +66,35 @@ public class GoogleMap extends JFrame{
 			StringTokenizer st = new StringTokenizer(location, "&");
 			String imageURL = null;
 			////
-			if(st.countTokens() == 0) { // ¾Æ¹«°Íµµ ÀÔ·Â¾ÈÇÏ¸é °Ç±¹´ëÇĞ±³ ÀÔ·ÂÇÏµµ·Ï ÇÔ.
+			if(st.countTokens() == 0) { // ì•„ë¬´ê²ƒë„ ì…ë ¥ì•ˆí•˜ë©´ ê±´êµ­ëŒ€í•™êµ ì…ë ¥í•˜ë„ë¡ í•¨.
 				imageURL = "https://maps.googleapis.com/maps/api/staticmap?size=512x512&scale=2&"
 						+ "maptype=roadmap\\&markers=size:mid|color:red"
-						+ "%7C" + URLEncoder.encode("±¤Áø±¸", "UTF-8")
-					    + "&key=AIzaSyBRgljRApZ960iJqcM5IInfA0fZJaYCVKo";
+						+ "%7C" + URLEncoder.encode("ê´‘ì§„êµ¬", "UTF-8")
+					    + "&key="Add You GoogleMap API Key";
 			}
 			
 			if(st.countTokens() == 1) { 
 				imageURL = "https://maps.googleapis.com/maps/api/staticmap?size=512x512&scale=2&"
 						+ "maptype=roadmap\\&markers=size:mid|color:red"
-						+ "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "&key=AIzaSyBRgljRApZ960iJqcM5IInfA0fZJaYCVKo";
+						+ "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "&key="Add You GoogleMap API Key"";
 			}
 			
 			else if(st.countTokens() == 2) {
 				imageURL = "https://maps.googleapis.com/maps/api/staticmap?size=512x512&scale=2&"
 						+ "maptype=roadmap\\&markers=size:mid|color:red"
-						+ "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "&key=AIzaSyBRgljRApZ960iJqcM5IInfA0fZJaYCVKo";
+						+ "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "&key="Add You GoogleMap API Key"";
 			}
 			
 			else if(st.countTokens() == 3) {
 				imageURL = "https://maps.googleapis.com/maps/api/staticmap?size=512x512&scale=2&"
 						+ "maptype=roadmap\\&markers=size:mid|color:red"
-						+ "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "%7C" + URLEncoder.encode(st.nextToken() + "°Ç´ë", "UTF-8")
-					    + "&key=AIzaSyBRgljRApZ960iJqcM5IInfA0fZJaYCVKo";
+						+ "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "%7C" + URLEncoder.encode(st.nextToken() + "ê±´ëŒ€", "UTF-8")
+					    + "&key="Add You GoogleMap API Key"";
 			}
 			////
 			URL url = new URL(imageURL);
@@ -102,7 +102,7 @@ public class GoogleMap extends JFrame{
 			OutputStream os = new FileOutputStream(location);
 			byte[] b = new byte[2048];
 			int length;
-			while((length = is.read(b)) != -1) { // EOF°¡ µÉ¶§±îÁö ÀĞÀ½.
+			while((length = is.read(b)) != -1) { // EOFê°€ ë ë•Œê¹Œì§€ ì½ìŒ.
 				os.write(b,  0,  length);
 			}
 			is.close();
